@@ -2,7 +2,6 @@ import React from "react";
 import Button from "elements/Button/Button";
 
 export default function Categories({ data }) {
-  console.log(">>>>", data);
   return data.map((category, index1) => {
     return (
       <section className="container" key={`category-${index1}`}>
@@ -29,10 +28,10 @@ export default function Categories({ data }) {
                     )}
                     <figure className="img-wrapper" style={{ height: 180 }}>
                       <img
-                        src={item.imgUrl}
+                        src={item.imageUrl}
                         alt={item.name}
                         className="img-cover"
-                      ></img>
+                      />
                     </figure>
                     <div className="meta-wrapper">
                       <Button
