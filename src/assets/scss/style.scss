@@ -51,6 +51,7 @@
   font-weight: 500;
   font-family: "Poppins", sans-serif;
   color: $primary;
+
   &:hover {
     color: $primary;
     text-decoration: none;
@@ -73,12 +74,14 @@ header {
             color: $primary;
           }
         }
+
         a {
           &.nav-link {
             letter-spacing: 1px;
             color: $gray-900;
             padding-left: 1rem;
             padding-right: 1rem;
+
             &:hover {
               text-decoration: underline;
             }
@@ -109,6 +112,7 @@ section {
   &.bordered {
     border: 1px solid $gray-200;
   }
+
   border-radius: 15px;
 
   .tag {
@@ -122,6 +126,7 @@ section {
     color: $white;
     min-height: 30px;
     border-radius: 0 15px;
+
     span {
       font-weight: 300;
     }
@@ -136,10 +141,12 @@ section {
 
   .meta-wrapper {
     margin-top: 1rem;
+
     h5 {
       font-size: 1.125rem;
       margin-bottom: 2px;
     }
+
     span {
       font-size: 0.875rem;
     }
@@ -149,6 +156,7 @@ section {
     overflow: hidden;
     cursor: pointer;
     height: 100%;
+
     &:after {
       position: absolute;
       content: "";
@@ -193,9 +201,11 @@ section {
       .meta-wrapper {
         transform: translateY(-10px);
       }
+
       &:after {
         transform: scale(1);
       }
+
       .img-wrapper {
         transform: scale(1);
       }
@@ -222,17 +232,20 @@ footer {
   .list-group-item {
     padding: 0.3125rem 0;
     border: 0;
+
     a,
     span {
       color: $gray-500;
       font-weight: 300;
     }
+
     a {
       @include hover-focus {
         color: $gray-800;
       }
     }
   }
+
   .copyrights {
     margin: 50px 0;
     font-weight: 300;
