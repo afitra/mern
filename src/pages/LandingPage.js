@@ -5,12 +5,16 @@ import Hero from "parts/Hero";
 import MostPicked from "parts/MostPicked";
 import Categories from "parts/Categories";
 import Testimony from "parts/Testimony";
+import Footer from "parts/Footer";
 export default class LandingPage extends Component {
   constructor(props) {
+    console.log(111111);
     super(props);
     this.refMostPicked = React.createRef();
   }
   render() {
+    console.log(2222);
+
     return (
       <>
         <Header {...this.props}></Header>
@@ -24,6 +28,7 @@ export default class LandingPage extends Component {
         ></MostPicked>
         <Categories data={LandingPageJson.categories} />
         <Testimony data={LandingPageJson.testimonial} />
+        <Footer />
       </>
     );
   }
