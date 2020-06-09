@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 import "./Star.scss";
 export default function Star({ className, value, height, width, spacing }) {
   const decimals = Number(value) % 1;
-  var star = [];
+  const star = [];
   let leftPos = 0;
   for (let i = 0; i < 5 && i < value - decimals; i++) {
     // const element = array[i];
@@ -42,7 +42,7 @@ export default function Star({ className, value, height, width, spacing }) {
     starPlaceHolder.push(
       <div
         className="star placeholder"
-        key={`start-${j}`}
+        key={`starPlaceholder-${j}`}
         style={{
           left: j * width,
           height: height,
@@ -54,7 +54,10 @@ export default function Star({ className, value, height, width, spacing }) {
   }
   return (
     <>
-      <div className={["stars", className].join(" ")}>
+      <div
+        className={["stars", className].join(" ")}
+        style={{ height: height }}
+      >
         {starPlaceHolder}
         {star}
       </div>
