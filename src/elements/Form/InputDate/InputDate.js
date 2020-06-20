@@ -1,39 +1,51 @@
 import React, { useState, useRef, useEffect } from "react"
 import propTypes from "prop-types"
 
-// import { DateRange } from "react-date-range";
+import { DateRange } from "react-date-range"
 
 import "./index.scss"
-// import "react-date-range/dist/styles.css"; // main css file
-// import "react-date-range/dist/theme/default.css"; // theme css file
+import "react-date-range/dist/styles.css" // main css file
+import "react-date-range/dist/theme/default.css" // theme css file
 
 import formatDate from "utils/formatDate"
 import iconCalendar from "assets/images/icons/icon-calendar.svg"
 
-export default function Number(props) {
-  const { value, placeholder, namemin, max, prefix, suffix } = props
-  const [InputValue, setInputValue] = useState(`${prefix}${value}${suffix}`)
+export default function Date(props) {
+  const { value, placeholder, name } = props
+  const [isShowed, setIsShowed] = useState(false)
 
-  const onChange = (e) => {
-    let value = String(e.target.value)
-    if (prefix) value = value.replace(prefix)
-    if (suffix) value = value.replace(suffix)
+  const datePickerChange = (value) => {
+    const target = {
+      target: {
+        value: value.selection,
+        name: name,
+      },
+    }
+    props.onChange(target)
+  }
 
-    const patternNumeric = new RegExp("[0-9]*")
-    const isNumeric = patternNumeric.test.value
-    if (isNumeric && +value <= max && +value >= min) {
-      props.onChange({
-        target: { name: name, value: +value },
-      })
-      setInputValue(`${prefix}${value}${suffix}`)
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside) /// >>>>> componentdidmount
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  })
+
+  const refDate = useRef(null)
+  const handleClickOutside = (event) => {
+    if (refDate && !refDate.current.contains(event.target)) {
+      setIsShowed(false)
     }
   }
-  const minus = () => {
-    value > minus && onChange({ target: { name: name, value: +value - 1 } })
+
+  const check = (focus) => {
+    focus.indexOf(1) < 0 && setIsShowed(false)
   }
-  const plus = () => {
-    value > minus && onChange({ target: { name: name, value: +value + 1 } })
-  }
+
+  const displayDate = `${value.startDate ? formatDate(value.startDate) : ""}${
+    value.endDate ? " - " + formatDate(value.endDate) : ""
+  }`
 
   return (
     <div
@@ -71,14 +83,8 @@ export default function Number(props) {
   )
 }
 
-Number.defaultProps = {
-  min: 1,
-  max: 2,
-  prefix: "",
-  suffix: "",
-}
-Number.prototype = {
-  value: propTypes.oneOfType([propTypes.string, propTypes.number]),
+Date.propTypes = {
+  value: propTypes.object,
   onChange: propTypes.func,
   placeholder: propTypes.string,
   outerClassName: propTypes.string,
