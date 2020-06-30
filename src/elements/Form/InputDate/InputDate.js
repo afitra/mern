@@ -3,7 +3,7 @@ import propTypes from "prop-types"
 
 import { DateRange } from "react-date-range"
 
-import "./index.scss"
+import "./InputDate.scss"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 

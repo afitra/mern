@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+// import { connect } from "react-redux"
 import Header from "parts/Header"
 import LandingPageJson from "json/landingPage.json"
 import Hero from "parts/Hero"
@@ -8,9 +9,12 @@ import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
 export default class LandingPage extends Component {
   constructor(props) {
-    console.log(111111)
     super(props)
     this.refMostPicked = React.createRef()
+  }
+  componentDidMount() {
+    window.title = "staycation | Home"
+    window.scrollTo(0, 0)
   }
   render() {
     return (

@@ -58,7 +58,8 @@ test("Should show date picker when click input field", () => {
   //   screen.debug();
   fireEvent.click(input, { button: 1 })
   const datePickerWrapper = container.querySelector(`.date-range-wrapper`)
-  //   screen.debug();
+  // screen.debug()
+  // console.log(">>>>><<<<<<<", datePickerWrapper)
 
   expect(datePickerWrapper).toBeInTheDocument()
 })
