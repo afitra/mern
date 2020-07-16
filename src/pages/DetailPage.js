@@ -6,6 +6,10 @@ import FeaturedImage from "parts/FeaturedImage"
 import ItemDetails from "json/itemDetails.json"
 import PageDetailDescription from "parts/PageDetailDescription"
 import BookingForm from "parts/BookingForm"
+import Categories from "parts/Categories"
+import Testimony from "parts/Testimony"
+import Footer from "parts/Footer"
+
 export default class DetailPage extends Component {
   componentDidMount() {
     window.title = "Detail Page"
@@ -18,7 +22,7 @@ export default class DetailPage extends Component {
     ]
     return (
       <>
-        <Header {...this.props}></Header>
+        <Header {...this.props} />
         <PageDetailTitle
           breadcrumb={breadcrumb}
           data={ItemDetails}
@@ -34,6 +38,10 @@ export default class DetailPage extends Component {
             </div>
           </div>
         </section>
+        <Categories data={ItemDetails.categories} />
+        <Testimony data={ItemDetails.testimonial} />
+
+        <Footer />
       </>
     )
   }

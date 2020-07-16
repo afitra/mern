@@ -1,8 +1,8 @@
 import React from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
-import LandingPage from "pages/LandingPage"
-import DetailPage from "pages/DetailPage"
-import Example from "pages/Example.js"
+
+import { Checkout, LandingPage, DetailPage, Example } from "pages"
+
 import "./assets/scss/style.scss"
 function App() {
   return (
@@ -10,6 +10,7 @@ function App() {
       <Router>
         <Route exact path="/" component={LandingPage}></Route>
         <Route exact path="/properties/:id" component={DetailPage}></Route>
+        <Route path="/checkout" component={Checkout}></Route>
         <Route path="/example" component={Example}></Route>
       </Router>
     </div>
