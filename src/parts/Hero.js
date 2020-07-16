@@ -1,18 +1,18 @@
-import React from "react";
-import Button from "elements/Button/Button";
-import ImageHero from "assets/images/img-hero.jpg";
-import ImageHero_ from "assets/images/img-hero-frame.jpg";
-import IconCities from "assets/images/icons/icon-cities.svg";
-import IconTraveler from "assets/images/icons/icon-traveler.svg";
-import IconTreasure from "assets/images/icons/icon-treasure.svg";
-import CostomFormat from "helpers/formatNumber";
-import Fade from "react-reveal/Fade";
+import React from "react"
+import Button from "elements/Button/Button"
+import ImageHero from "assets/images/img-hero.jpg"
+import ImageHero_ from "assets/images/img-hero-frame.jpg"
+import IconCities from "assets/images/icons/icon-cities.svg"
+// import IconTraveler from "assets/images/icons/icon-traveler.svg"
+import IconTreasure from "assets/images/icons/icon-treasure.svg"
+import CostomFormat from "helpers/formatNumber"
+import Fade from "react-reveal/Fade"
 export default function Hero(props) {
   function showMostPicked() {
     window.scrollTo({
       top: props.refMostPicked.current.offsetTop - 30,
       behavior: "smooth",
-    });
+    })
   }
 
   return (
@@ -39,7 +39,7 @@ export default function Hero(props) {
               <div className="col-auto" style={{ marginRight: 35 }}>
                 <center>
                   <img
-                    src={IconTraveler}
+                    src="/assets/images/icon-traveler.svg"
                     alt={`${props.data.travelers} Travelers`}
                   />
                 </center>
@@ -104,5 +104,5 @@ export default function Hero(props) {
         </div>
       </section>
     </Fade>
-  );
+  )
 }
