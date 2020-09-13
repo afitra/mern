@@ -1,7 +1,9 @@
 import React, { Component } from "react"
 import propTypes from "prop-types"
+ 
 import { InputNumber, InputDate, Button } from "elements/Form"
-export default class BookingForm extends Component {
+import { withRouter } from "react-router-dom"
+class BookingForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -59,6 +61,17 @@ export default class BookingForm extends Component {
     }
   }
 
+  startBooking = () => {
+    const { data } = this.state
+    this.props.startBooking({
+      _id: this.props.itemDetails._id,
+      duration: data.duration,
+      date: {
+        startDate: data.date.startDate,
+        endDate: data.date.endDate,
+      },
+    })
+  }
   render() {
     const { data } = this.state
     const { itemDetails, startBooking } = this.props
@@ -119,4 +132,4 @@ BookingForm.propTypes = {
   startBooking: propTypes.func,
 }
 
-// export default withRouter(BookingForm)
+export default withRouter(BookingForm)

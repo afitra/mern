@@ -1,18 +1,22 @@
 import React, { Component } from "react"
+import Fade from "react-reveal/Fade"
+import { connect } from "react-redux"
 
 import Header from "parts/Header"
 import PageDetailTitle from "parts/PageDetailTitle"
 import FeaturedImage from "parts/FeaturedImage"
-import ItemDetails from "json/itemDetails.json"
 import PageDetailDescription from "parts/PageDetailDescription"
 import BookingForm from "parts/BookingForm"
 import Categories from "parts/Categories"
 import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
 
-export default class DetailPage extends Component {
+import ItemDetails from "json/itemDetails.json"
+
+import { checkoutBooking } from "store/actions/checkout"
+class DetailsPage extends Component {
   componentDidMount() {
-    window.title = "Detail Page"
+    window.title = "Details Page"
     window.scrollTo(0, 0)
   }
   render() {
@@ -23,26 +27,33 @@ export default class DetailPage extends Component {
     return (
       <>
         <Header {...this.props} />
-        <PageDetailTitle
-          breadcrumb={breadcrumb}
-          data={ItemDetails}
-        ></PageDetailTitle>
-        <FeaturedImage data={ItemDetails.imageUrls}></FeaturedImage>
+        <PageDetailTitle breadcrumb={breadcrumb} data={ItemDetails} />
+        <FeaturedImage data={ItemDetails.imageUrls} />
         <section className="container">
           <div className="row">
             <div className="col-7 pr-5">
-              <PageDetailDescription data={ItemDetails} />
+              <Fade bottom>
+                <PageDetailDescription data={ItemDetails} />
+              </Fade>
             </div>
             <div className="col-5">
-              <BookingForm itemDetails={ItemDetails}></BookingForm>
+              <Fade bottom>
+                <BookingForm
+                  itemDetails={ItemDetails}
+                  startBooking={this.props.checkoutBooking}
+                />
+              </Fade>
             </div>
           </div>
         </section>
         <Categories data={ItemDetails.categories} />
-        <Testimony data={ItemDetails.testimonial} />
-
+        <Fade bottom>
+          <Testimony data={ItemDetails.testimonial} />
+        </Fade>
         <Footer />
       </>
     )
   }
 }
+
+export default connect(null, { checkoutBooking })(DetailsPage)

@@ -227,7 +227,7 @@ export default class Checkout extends Component {
     )
   }
 }
-
+// eslint-disable-next-line no-unused-vars
 const mapStateToProps = (state) => ({
   checkout: state.checkout,
   page: state.page,
