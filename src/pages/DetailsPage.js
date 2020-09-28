@@ -12,14 +12,23 @@ import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
 
 import ItemDetails from "json/itemDetails.json"
-
 import { checkoutBooking } from "store/actions/checkout"
+
 class DetailsPage extends Component {
   componentDidMount() {
     window.title = "Details Page"
     window.scrollTo(0, 0)
+
+    // if (!this.props.page[this.props.match.params.id])
+    //   this.props.fetchPage(
+    //     `/detail-page/${this.props.match.params.id}`,
+    //     this.props.match.params.id
+    //   )
   }
   render() {
+    const { page, match } = this.props
+    console.log("1111", this.props)
+    // if (!page[match.params.id]) return null
     const breadcrumb = [
       { pageTitle: "Home", pageHref: "" },
       { pageTitle: "House Details", pageHref: "" },
@@ -56,4 +65,9 @@ class DetailsPage extends Component {
   }
 }
 
-export default connect(null, { checkoutBooking })(DetailsPage)
+const mapStateToProps = (state) => ({
+  // mengambil state di redux di jadikan props
+  page: state.page,
+})
+
+export default connect(mapStateToProps, { checkoutBooking })(DetailsPage) // checkoutBooking di taruh situ agar bisa diakses lewat props

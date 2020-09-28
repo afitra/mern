@@ -1,11 +1,11 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
+import React from "react"
+import Fade from "react-reveal/Fade"
 
-import { InputText } from "elements/Form";
+import { InputText } from "elements/Form"
 
 export default function BookingInformation(props) {
-  const { data, ItemDetails, checkout } = props;
-  console.log(ItemDetails);
+  const { data, ItemDetails, checkout } = props
+  console.log("yyyyy", props, "bbb", ItemDetails)
   return (
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
@@ -16,7 +16,7 @@ export default function BookingInformation(props) {
                 <figure className="img-wrapper" style={{ height: 270 }}>
                   <img
                     className="img-cover"
-                    src={`${process.env.REACT_APP_HOST}/${ItemDetails.imageId[0].imageUrl}`}
+                    src={`/${ItemDetails.imageId[0].imageUrl}`}
                     alt={ItemDetails.title}
                   />
                 </figure>
@@ -81,5 +81,5 @@ export default function BookingInformation(props) {
         </div>
       </div>
     </Fade>
-  );
+  )
 }

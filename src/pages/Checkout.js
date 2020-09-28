@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import Fade from "react-reveal/Fade"
-// import { connect } from "react-redux"
+import { connect } from "react-redux"
 
 import Header from "parts/Header"
 import Button from "elements/Button/Button.js"
@@ -17,9 +17,9 @@ import Completed from "parts/Checkout/Completed"
 
 import ItemDetails from "json/itemDetails.json"
 
-// import { submitBooking } from "store/actions/checkout"
+import { submitBooking } from "store/actions/checkout"
 
-export default class Checkout extends Component {
+class Checkout extends Component {
   state = {
     data: {
       firstName: "",
@@ -69,9 +69,10 @@ export default class Checkout extends Component {
   }
 
   render() {
+    console.log("masokkk Checkout.js")
     const { data } = this.state
     const { checkout, page } = this.props
-    console.log(page, data)
+    console.log(this.props, ">>>>>>>", page, "xxx", checkout)
     if (!checkout)
       return (
         <div className="container">
@@ -233,5 +234,5 @@ const mapStateToProps = (state) => ({
   page: state.page,
 })
 
-// export default connect(mapStateToProps, { submitBooking })(Checkout)
+export default connect(mapStateToProps, {})(Checkout)
 // export default Checkout

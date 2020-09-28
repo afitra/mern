@@ -1,40 +1,40 @@
-import React, { Component } from "react";
-import Fade from "react-reveal/Fade";
-import { connect } from "react-redux";
+import React, { Component } from "react"
+import Fade from "react-reveal/Fade"
+import { connect } from "react-redux"
 
-import Header from "parts/Header";
-import PageDetailTitle from "parts/PageDetailTitle";
-import FeaturedImage from "parts/FeaturedImage";
-import PageDetailDescription from "parts/PageDetailDescription";
-import BookingForm from "parts/BookingForm";
-import Activities from "parts/Activities";
-import Testimony from "parts/Testimony";
-import Footer from "parts/Footer";
+import Header from "parts/Header"
+import PageDetailTitle from "parts/PageDetailTitle"
+import FeaturedImage from "parts/FeaturedImage"
+import PageDetailDescription from "parts/PageDetailDescription"
+import BookingForm from "parts/BookingForm"
+import Activities from "parts/Activities"
+import Testimony from "parts/Testimony"
+import Footer from "parts/Footer"
 
-import { checkoutBooking } from "store/actions/checkout";
-import { fetchPage } from "store/actions/page";
+import { checkoutBooking } from "store/actions/checkout"
+import { fetchPage } from "store/actions/page"
 
 class DetailsPage extends Component {
   componentDidMount() {
-    window.title = "Details Page";
-    window.scrollTo(0, 0);
+    window.title = "Details Page"
+    window.scrollTo(0, 0)
 
     if (!this.props.page[this.props.match.params.id])
       this.props.fetchPage(
         `/detail-page/${this.props.match.params.id}`,
         this.props.match.params.id
-      );
+      )
   }
 
   render() {
-    const { page, match } = this.props;
+    const { page, match } = this.props
 
-    if (!page[match.params.id]) return null;
+    if (!page[match.params.id]) return null
 
     const breadcrumb = [
       { pageTitle: "Home", pageHref: "" },
       { pageTitle: "House Details", pageHref: "" },
-    ];
+    ]
 
     return (
       <>
@@ -64,14 +64,14 @@ class DetailsPage extends Component {
 
         <Footer />
       </>
-    );
+    )
   }
 }
 
 const mapStateToProps = (state) => ({
   page: state.page,
-});
+})
 
 export default connect(mapStateToProps, { checkoutBooking, fetchPage })(
   DetailsPage
-);
+)

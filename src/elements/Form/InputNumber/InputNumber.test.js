@@ -35,7 +35,7 @@ const setup = () => {
 test("input harus jadi string", () => {
   const { input } = setup()
 
-  // console.log(">>>> ini type input", typeof input.value)
+  // console.log(" ini type input", typeof input.value)
 
   fireEvent.change(input, { target: { value: 23 } })
   expect(input.value).toBe("23")
@@ -43,7 +43,7 @@ test("input harus jadi string", () => {
 
 test("jika input lebih dari 30 harus jadi string kosong", () => {
   const { input } = setup()
-  console.log(">>>> ini string kosongnya", input.value)
+
   fireEvent.change(input, { target: { value: 33 } })
   expect(input.value).toBe("")
 })
