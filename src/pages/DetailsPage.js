@@ -26,7 +26,7 @@ class DetailsPage extends Component {
       //   this.props.match.params.id
       // )
       this.props.fetchPage(
-        `${process.env.REACT_APP_HOST}/api/v1/member/detail-page/${this.props.match.params.id}`,
+        `/detail-page/${this.props.match.params.id}`,
         this.props.match.params.id
       )
     }

@@ -19,7 +19,7 @@ class LandingPage extends Component {
     if (!this.props.page.LandingPage) {
       this.props.fetchPage(
         // "https://admin-bwamern.herokuapp.com/api/v1/member/landing-page",
-        `${process.env.REACT_APP_HOST}/api/v1/member/landing-page`,
+        `/landing-page`,
         "landingPage"
       )
     }
