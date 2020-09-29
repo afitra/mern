@@ -1,5 +1,6 @@
-import { FETCH_PAGE } from "../types";
-import axios from "configs/axios";
+import { FETCH_PAGE } from "../types"
+// import axios from "configs/axios";
+import axios from "axios"
 
 export const fetchPage = (url, page) => (dispatch) => {
   return axios.get(url).then((response) => {
@@ -8,6 +9,6 @@ export const fetchPage = (url, page) => (dispatch) => {
       payload: {
         [page]: response.data,
       },
-    });
-  });
-};
+    })
+  })
+}

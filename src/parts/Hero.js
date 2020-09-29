@@ -3,7 +3,7 @@ import Button from "elements/Button/Button"
 import ImageHero from "assets/images/img-hero.jpg"
 import ImageHero_ from "assets/images/img-hero-frame.jpg"
 import IconCities from "assets/images/icons/icon-cities.svg"
-// import IconTraveler from "assets/images/icons/icon-traveler.svg"
+import IconTraveler from "assets/images/icons/icon-traveler.svg"
 import IconTreasure from "assets/images/icons/icon-treasure.svg"
 import CostomFormat from "helpers/formatNumber"
 import Fade from "react-reveal/Fade"
@@ -39,7 +39,7 @@ export default function Hero(props) {
               <div className="col-auto" style={{ marginRight: 35 }}>
                 <center>
                   <img
-                    src="/assets/images/icon-traveler.svg"
+                    src={IconTraveler}
                     alt={`${props.data.travelers} Travelers`}
                   />
                 </center>

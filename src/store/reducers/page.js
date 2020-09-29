@@ -1,4 +1,4 @@
-import { FETCH_PAGE } from "../types";
+ import { FETCH_PAGE } from "../types";
 
 const initialState = {};
 

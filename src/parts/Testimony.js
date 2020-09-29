@@ -1,8 +1,8 @@
-import React from "react";
-import Star from "elements/Star/Star.js";
-import Fade from "react-reveal/Fade";
-import TestimonyAccent from "../assets/images/testimonial-landingpages-frame.jpg";
-import Button from "elements/Button/Button";
+import React from "react"
+import Star from "elements/Star/Star.js"
+import Fade from "react-reveal/Fade"
+import TestimonyAccent from "../assets/images/testimonial-landingpages-frame.jpg"
+import Button from "elements/Button/Button"
 export default function Testimony({ data }) {
   return (
     <Fade>
@@ -14,7 +14,7 @@ export default function Testimony({ data }) {
               style={{ argin: `30px 0 0 30px` }}
             >
               <img
-                src={data.imageUrl}
+                src={`${process.env.REACT_APP_HOST}/${data.imageUrl}`}
                 alt="Testimonial"
                 className="position-absolute"
                 style={{ zIndex: 1 }}
@@ -52,5 +52,5 @@ export default function Testimony({ data }) {
         </div>
       </section>
     </Fade>
-  );
+  )
 }

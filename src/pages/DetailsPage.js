@@ -8,27 +8,33 @@ import FeaturedImage from "parts/FeaturedImage"
 import PageDetailDescription from "parts/PageDetailDescription"
 import BookingForm from "parts/BookingForm"
 import Categories from "parts/Categories"
+import Activities from "parts/Activities"
 import Testimony from "parts/Testimony"
 import Footer from "parts/Footer"
 
-import ItemDetails from "json/itemDetails.json"
+// import ItemDetails from "json/itemDetails.json"
 import { checkoutBooking } from "store/actions/checkout"
-
+import { fetchPage } from "store/actions/page"
 class DetailsPage extends Component {
   componentDidMount() {
     window.title = "Details Page"
     window.scrollTo(0, 0)
 
-    // if (!this.props.page[this.props.match.params.id])
-    //   this.props.fetchPage(
-    //     `/detail-page/${this.props.match.params.id}`,
-    //     this.props.match.params.id
-    //   )
+    if (!this.props.page[this.props.match.params.id]) {
+      // this.props.fetchPage(
+      //   `/detail-page/${this.props.match.params.id}`,
+      //   this.props.match.params.id
+      // )
+      this.props.fetchPage(
+        `${process.env.REACT_APP_HOST}/api/v1/member/detail-page/${this.props.match.params.id}`,
+        this.props.match.params.id
+      )
+    }
   }
   render() {
     const { page, match } = this.props
-    console.log("1111", this.props)
-    // if (!page[match.params.id]) return null
+
+    if (!page[match.params.id]) return null
     const breadcrumb = [
       { pageTitle: "Home", pageHref: "" },
       { pageTitle: "House Details", pageHref: "" },
@@ -36,28 +42,29 @@ class DetailsPage extends Component {
     return (
       <>
         <Header {...this.props} />
-        <PageDetailTitle breadcrumb={breadcrumb} data={ItemDetails} />
-        <FeaturedImage data={ItemDetails.imageUrls} />
+        <PageDetailTitle breadcrumb={breadcrumb} data={page[match.params.id]} />
+        <FeaturedImage data={page[match.params.id].imageId} />
         <section className="container">
           <div className="row">
             <div className="col-7 pr-5">
               <Fade bottom>
-                <PageDetailDescription data={ItemDetails} />
+                <PageDetailDescription data={page[match.params.id]} />
               </Fade>
             </div>
             <div className="col-5">
               <Fade bottom>
                 <BookingForm
-                  itemDetails={ItemDetails}
+                  itemDetails={page[match.params.id]}
                   startBooking={this.props.checkoutBooking}
                 />
               </Fade>
             </div>
           </div>
         </section>
-        <Categories data={ItemDetails.categories} />
+        {/* <Categories data={page[match.params.id].categories} /> */}
+        <Activities data={page[match.params.id].activityId} />
         <Fade bottom>
-          <Testimony data={ItemDetails.testimonial} />
+          <Testimony data={page[match.params.id].testimonial} />
         </Fade>
         <Footer />
       </>
@@ -70,4 +77,6 @@ const mapStateToProps = (state) => ({
   page: state.page,
 })
 
-export default connect(mapStateToProps, { checkoutBooking })(DetailsPage) // checkoutBooking di taruh situ agar bisa diakses lewat props
+export default connect(mapStateToProps, { checkoutBooking, fetchPage })(
+  DetailsPage
+) // checkoutBooking di taruh situ agar bisa diakses lewat props

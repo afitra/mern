@@ -1,11 +1,11 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
+import React from "react"
+import Fade from "react-reveal/Fade"
 
-import { InputText } from "elements/Form";
+import { InputText } from "elements/Form"
 
 export default function BookingInformation(props) {
-  const { data, ItemDetails, checkout } = props;
-  console.log(ItemDetails);
+  const { data, ItemDetails, checkout } = props
+
   return (
     <Fade>
       <div className="container" style={{ marginBottom: 30 }}>
@@ -81,5 +81,5 @@ export default function BookingInformation(props) {
         </div>
       </div>
     </Fade>
-  );
+  )
 }

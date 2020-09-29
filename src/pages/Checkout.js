@@ -69,10 +69,9 @@ class Checkout extends Component {
   }
 
   render() {
-    console.log("masokkk Checkout.js")
     const { data } = this.state
     const { checkout, page } = this.props
-    console.log(this.props, ">>>>>>>", page, "xxx", checkout)
+
     if (!checkout)
       return (
         <div className="container">
@@ -189,6 +188,8 @@ class Checkout extends Component {
                           isBlock
                           isPrimary
                           hasShadow
+                          // onClick={nextStep}
+                          // revisi ke >>>>>>>
                           onClick={() => this._Submit(nextStep)}
                         >
                           Continue to Book
@@ -234,5 +235,5 @@ const mapStateToProps = (state) => ({
   page: state.page,
 })
 
-export default connect(mapStateToProps, {})(Checkout)
+export default connect(mapStateToProps, { submitBooking })(Checkout)
 // export default Checkout

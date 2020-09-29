@@ -1,7 +1,6 @@
-import React from "react";
-import Fade from "react-reveal/Fade";
-
-import Button from "elements/Button";
+import React from "react"
+import Fade from "react-reveal/Fade"
+import Button from "elements/Button"
 
 export default function MostPicked(props) {
   return (
@@ -47,10 +46,10 @@ export default function MostPicked(props) {
                   </div>
                 </Fade>
               </div>
-            );
+            )
           })}
         </div>
       </Fade>
     </section>
-  );
+  )
 }
